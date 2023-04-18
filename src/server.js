@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const logger = require('morgan');
 const cors = require('cors');
-const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 const router = require('./router');
 
@@ -17,8 +17,10 @@ server.use(
 	})
 );
 
-server.use(express.urlencoded({ limit: '50mb', extended: false })
-);
+server.use(bodyParser.urlencoded({ extended: false, limit: '50mb' }));
+
+// parse application/json
+server.use(bodyParser.json({ limit: '50mb' }));
 
 server.use('/api', router);
 
