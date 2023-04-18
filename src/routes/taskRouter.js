@@ -1,6 +1,7 @@
 const express = require('express');
 const createTask = require('../middlewares/tasks/createTask');
-const { validateString, validateBoolean } = require('../middlewares/common/validations');
+const updateTask = require('../middlewares/tasks/updateTask');
+const { validateString, validateBoolean, validateId } = require('../middlewares/common/validations');
 const { NAME_FIELD, DESCRIPTION_FIELD, COMPLETED_FIELD } = require('../constants/task');
 const checkError = require('../middlewares/common/checkError');
 
@@ -13,6 +14,16 @@ taskRouter.post('/',
 	validateString(DESCRIPTION_FIELD, false),
 	validateBoolean(COMPLETED_FIELD, false),
 	checkError,
-	createTask);
+	createTask
+);
+
+taskRouter.put('/:id',
+	validateString(NAME_FIELD, false),
+	validateString(DESCRIPTION_FIELD, false),
+	validateBoolean(COMPLETED_FIELD, false),
+	validateId,
+	checkError,
+	updateTask
+);
 
 module.exports = taskRouter;
