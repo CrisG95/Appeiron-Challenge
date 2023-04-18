@@ -35,7 +35,8 @@ Task.methods.edit = async function edit({
 }) {
 	this.name = name || this.name;
 	this.description = description || this.description;
-	this.completed = completed || this.completed;
+	if(completed !== undefined && completed !== null && completed !== this.completed)
+		this.completed = completed;
 
 	return this.save();
 };
