@@ -31,7 +31,7 @@ module.exports = {
 		'no-underscore-dangle': ['warn', {
 			allowAfterThis: true,
 			allowAfterSuper: true,
-			allow: ['_call', '__rootpath', '_where', '_id']
+			allow: ['_call', '__rootpath', '_where', '_id', '_body']
 		}],
 
 		'no-tabs': 0,
