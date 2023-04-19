@@ -1,0 +1,25 @@
+paths:
+  /api/tasks/:
+    post:
+      operationId: createTask
+      tags:
+        - Task
+      summary: Create Task
+      description: |
+
+        This service is responsible for creating tasks in database
+
+      requestBody:
+        description: Create Task
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateTask"
+      responses:
+        "200":
+          $ref: "#/components/responses/SuccessCreateTaskResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalError"

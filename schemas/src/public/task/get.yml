@@ -1,0 +1,58 @@
+paths:
+  /api/tasks/:
+    get:
+      operationId: getTasks
+      tags:
+        - Task
+      summary: Get Tasks
+      parameters:
+        - in: query
+          name: status
+          schema:
+            type: boolean
+            description: Allows to filter the data with the status of the task in field 'completed'.
+        - in: query
+          name: name
+          schema:
+            type: string
+            description: Allows to sort by field 'name'.
+            enum:
+              - ASC
+              - DESC
+        - in: query
+          name: description
+          schema:
+            type: string
+            description: Allows to sort by filed 'description'.
+            enum:
+              - ASC
+              - DESC
+        - in: query
+          name: completed
+          schema:
+            type: string
+            description: Allows to sort by field 'completed'.
+            enum:
+              - ASC
+              - DESC
+        - in: query
+          name: limit
+          schema:
+            type: number
+            description: Allows to add limit in the filtering query.
+        - in: query
+          name: page
+          schema:
+            type: number
+            description: Allows to add page in the filtering query.
+      description: |
+
+        This service is responsible to get the tasks from database filtering by status of field completed (true or false), sortering by name, description or completed in order ascendent or descendent and add pagination.
+
+      responses:
+        "200":
+          $ref: "#/components/responses/SuccessGetTasksResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalError"

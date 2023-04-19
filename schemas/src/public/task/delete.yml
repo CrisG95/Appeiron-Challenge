@@ -1,0 +1,18 @@
+paths:
+  /api/tasks/{taskId}:
+    delete:
+      operationId: deleteteTask
+      tags:
+        - Task
+      summary: Delete Task
+      description: |
+
+        This service is responsible for delete a task in database
+
+      responses:
+        "200":
+          $ref: "#/components/responses/SuccessDeleteTaskResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalError"

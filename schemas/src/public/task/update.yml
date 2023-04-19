@@ -1,0 +1,25 @@
+paths:
+  /api/tasks/{taskId}:
+    put:
+      operationId: updateTask
+      tags:
+        - Task
+      summary: Update Task
+      description: |
+
+        This service is responsible for update a tasks in database
+
+      requestBody:
+        description: Update Task
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateTask"
+      responses:
+        "200":
+          $ref: "#/components/responses/SuccessUpdateTaskResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalError"
