@@ -1,0 +1,45 @@
+components:
+  schemas:
+    Task:
+      description: Task
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/id"
+        name:
+          description: Name of the task
+          type: string
+          example: Develop service to update user
+        description:
+          description: Description of the task
+          type: string
+          example: This service will be available to update the user info
+        completed:
+          description: Status of the task
+          type: boolean
+          default: false
+          example: false
+
+    CreateTask:
+      description: Create a new task
+      type: object
+      properties:
+        name:
+          $ref: "#/components/schemas/Task/properties/name"
+        description:
+          $ref: "#/components/schemas/Task/properties/description"
+        completed:
+          $ref: "#/components/schemas/Task/properties/completed"
+      required:
+        - name
+
+    UpdateTask:
+      description: Update a task
+      type: object
+      properties:
+        name:
+          $ref: "#/components/schemas/Task/properties/name"
+        description:
+          $ref: "#/components/schemas/Task/properties/description"
+        completed:
+          $ref: "#/components/schemas/Task/properties/completed"
