@@ -5,6 +5,8 @@ paths:
       tags:
         - Task
       summary: Get Task By Id
+      security:
+        - bearerAuth: []
       description: |
 
         This service is responsible for return a task by id from database

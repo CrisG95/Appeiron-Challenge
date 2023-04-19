@@ -5,6 +5,8 @@ paths:
       tags:
         - Task
       summary: Get Tasks
+      security:
+        - bearerAuth: []
       parameters:
         - in: query
           name: status

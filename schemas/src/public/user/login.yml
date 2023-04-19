@@ -1,0 +1,25 @@
+paths:
+  /api/user/:
+    post:
+      operationId: loginUser
+      tags:
+        - User
+      summary: Login User
+      description: |
+
+        This service is responsible for login the user. It will return a token.
+
+      requestBody:
+        description: Login User
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginUser"
+      responses:
+        "200":
+          $ref: "#/components/responses/SuccessLoginUserResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "500":
+          $ref: "#/components/responses/InternalError"

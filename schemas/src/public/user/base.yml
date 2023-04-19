@@ -1,0 +1,32 @@
+components:
+  schemas:
+    User:
+      description: User
+      type: object
+      properties:
+        id:
+          $ref: "#/components/schemas/id"
+        name:
+          description: Name of the User
+          type: string
+          example: User admin
+        email:
+          description: Email of the User
+          type: string
+          example: admin@example.com
+        password:
+          description: Password of the User
+          type: string
+          example: Asdf1234
+
+    LoginUser:
+      description: Login User
+      type: object
+      properties:
+        email:
+          $ref: "#/components/schemas/User/properties/email"
+        password:
+          $ref: "#/components/schemas/User/properties/password"
+      required:
+        - email
+        - password

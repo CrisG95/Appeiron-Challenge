@@ -5,6 +5,8 @@ paths:
       tags:
         - Task
       summary: Create Task
+      security:
+        - bearerAuth: []
       description: |
 
         This service is responsible for creating tasks in database

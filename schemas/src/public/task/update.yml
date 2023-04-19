@@ -5,6 +5,8 @@ paths:
       tags:
         - Task
       summary: Update Task
+      security:
+        - bearerAuth: []
       description: |
 
         This service is responsible for update a tasks in database

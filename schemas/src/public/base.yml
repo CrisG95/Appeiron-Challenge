@@ -10,6 +10,8 @@ info:
 tags:
   - name: Tasks
     description: For managing tasks
+  - name: User
+    description: For managing users
 
 
 servers:
@@ -70,11 +72,10 @@ components:
       example: 7e1fc1eeb5b68406e048796
 
   securitySchemes:
-    ApiKey:
-      type: apiKey
-      in: header
-      name: admin
-      description: The middleware admin
+    bearerAuth:            # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 
   parameters:
     id:
@@ -264,6 +265,18 @@ components:
                 format: date-time
                 description: Value of field on database.
                 example: 2023-04-18T18:12:57.517
+
+    SuccessLoginUserResponse:
+      description: Successful login
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              token:
+                type: string
+                description: Value of the token.
+                example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQwNTZjYjJiMjk1YmI4NWVjNDk3MGMiLCJuYW1lI
 
     BadRequest:
       description: A client error has ocurred.

@@ -5,6 +5,8 @@ paths:
       tags:
         - Task
       summary: Delete Task
+      security:
+        - bearerAuth: []
       description: |
 
         This service is responsible for delete a task in database
