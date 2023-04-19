@@ -3,13 +3,17 @@ const createTask = require('../middlewares/tasks/createTask');
 const updateTask = require('../middlewares/tasks/updateTask');
 const getByIdTask = require('../middlewares/tasks/getByIdTask');
 const deleteTask = require('../middlewares/tasks/deleteTask');
-const { validateString, validateBoolean, validateId } = require('../middlewares/common/validations');
-const { NAME_FIELD, DESCRIPTION_FIELD, COMPLETED_FIELD } = require('../constants/task');
+const getTasks = require('../middlewares/tasks/getTasks');
+
+const {
+	validateString, validateBoolean, validateId, validateSort, validateNumber
+} = require('../middlewares/common/validations');
+const {
+	NAME_FIELD, DESCRIPTION_FIELD, COMPLETED_FIELD, LIMIT_FIELD, PAGE_FIELD
+} = require('../constants/task');
 const checkError = require('../middlewares/common/checkError');
 
 const taskRouter = express.Router();
-
-taskRouter.get('/', (req, res) => { res.json('Todo ok'); });
 
 taskRouter.post('/',
 	validateString(NAME_FIELD, true),
@@ -38,6 +42,17 @@ taskRouter.delete('/:id',
 	validateId,
 	checkError,
 	deleteTask
+);
+
+taskRouter.get('/',
+	validateBoolean('status', false),
+	validateSort(NAME_FIELD, false),
+	validateSort(DESCRIPTION_FIELD, false),
+	validateSort(COMPLETED_FIELD, false),
+	validateNumber(LIMIT_FIELD, false),
+	validateNumber(PAGE_FIELD, false),
+	checkError,
+	getTasks
 );
 
 module.exports = taskRouter;
